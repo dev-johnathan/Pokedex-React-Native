@@ -1,8 +1,3 @@
-# pokedex_typescript
-# pokedex-react-native
-# pokedex-react-native
-# pokedex-react-native
 # Pokedex-React-Native-MobileII
-# Pokedex_React_Native
-# pokedex_typescript
-# Pokedex-React-Native
+
+Projeto para matéria disciplinar Dispositivos Móveis II do curso Tecnólogo em Análise e Desenvolvimento de Sistemas.
