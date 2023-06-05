@@ -10,6 +10,7 @@ import pokeball from '../../assets/img/pokeballCard.png';
 
 
 import * as S from './styles';
+import { FadeAnimation } from "../FadeAnimation";
 
 
 
@@ -53,22 +54,23 @@ export function Card({data, ...rest}: Props) {
                             {PokemonType.type.name}
                         </S.PokemonTypeText>
                     </S.PokemonType> )}
-                    
                 </S.PokemonContentType>
             
-            
-            
             </S.LeftSide>
+        
 
             <S.RightSide>
-                <S.PokemonDetail source={pokeball}  />
-             <S.PokemonImage
-            source={{
-              uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
-            }}
-          />
-            </S.RightSide>
 
+                <S.PokemonDetail source={pokeball}  />
+                    <FadeAnimation>
+                         <S.PokemonImage
+                             source={{
+                                 uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
+                             }}
+                    />
+                    </FadeAnimation>
+            </S.RightSide>
+           
         </S.PokemonCard>
     )
 }

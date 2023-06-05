@@ -4,9 +4,11 @@ export default {
         background: '#FFFFFF',
         backgroundWater: '#58ABF6',
         backgroundEletric: '#F2CB55',
-
+        light_background: '##747476',
         text_white: '#FFFFFF',
         light_text: 'rbga(23, 23, 27, 0.6)',
+        detail: '#747476',
+        text: '#050617',
 
     type: {
 

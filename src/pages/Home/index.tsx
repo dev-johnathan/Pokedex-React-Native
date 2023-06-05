@@ -1,71 +1,93 @@
 import React, { useEffect, useState } from 'react';
-
-import * as S from './styles'
+import { TextInput } from 'react-native';
+import * as S from './styles';
 import api from '../../services/api';
 import { Card, Pokemon, PokemonType } from '../../components/Card';
 import { FlatList } from 'react-native';
-import { FadeAnimation } from '../../components/FadeAnimation';
-
+import { useNavigation } from '@react-navigation/native';
+import pokeballHeader from '../../assets/img/pokeball.png';
 
 type Request = {
-    id: number;
-    types: PokemonType[]
-}
+  id: number;
+  types: PokemonType[];
+};
 
 export function Home() {
-    
-    const [pokemons, setPokemons] = useState<Pokemon[]>([])
-    
-    useEffect(() => {
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
-        async function getAllPokemons() {
-            
-            const response = await api.get('/pokemon')
-            const {results} = response.data;
+  const { navigate } = useNavigation();
 
+  function handleNavigation(pokemonId: number) {
+    navigate('About', {
+      pokemonId,
+    });
+  }
 
-            const payloadPokemons = await Promise.all(
-                results.map(async (pokemon: Pokemon) =>{
-                    const {id, types} = await getMoreInfo(pokemon.url)
-              
-                    return{
-                        name: pokemon.name,
-                        id, 
-                        types
-                    }
-              
-                })
-            )
-               setPokemons(payloadPokemons)
+  useEffect(() => {
+    async function getAllPokemons() {
+      const response = await api.get('/pokemon');
+      const { results } = response.data;
 
-        }
-        
-        getAllPokemons()
+      const payloadPokemons = await Promise.all(
+        results.map(async (pokemon: Pokemon) => {
+          const { id, types } = await getMoreInfo(pokemon.url);
+          return {
+            name: pokemon.name,
+            id,
+            types,
+          };
+        })
+      );
 
-    }, [])
-
-    async function getMoreInfo(url: string): Promise<Request> {
-        const response = await api.get(url)
-        const {id, types} = response.data;
-
-        return{
-            id, types
-        }
+      setPokemons(payloadPokemons);
     }
-        
-    
 
+    getAllPokemons();
+  }, []);
+
+  async function getMoreInfo(url: string): Promise<Request> {
+    const response = await api.get(url);
+    const { id, types } = response.data;
+    return {
+      id,
+      types,
+    };
+  }
+
+  function handleSearch(query: string) {
+    setSearchQuery(query.toLowerCase());
+  }
+
+  const filteredPokemons = pokemons.filter((pokemon) => {
     return (
-    <S.Container>
-        <FlatList
-            data={pokemons}
-            keyExtractor={pokemon => pokemon.id.toString()}
-            renderItem={({item: pokemon}) => (
-                <FadeAnimation>
-                     <Card data={pokemon}/>
-                </FadeAnimation>
-            )}
-        />
-    </S.Container>
+      pokemon.name.toLowerCase().includes(searchQuery) ||
+      pokemon.id.toString().includes(searchQuery)
     );
+  });
+
+  return (
+    <S.Container>
+      <TextInput
+        style={S.SearchInput}
+        placeholder="Digite o número ou nome do Pokémon"
+        onChangeText={handleSearch}
+        value={searchQuery}
+      />
+      <S.Header source={pokeballHeader} />
+      <S.Title>Pokédex</S.Title>
+      <FlatList
+        data={filteredPokemons}
+        keyExtractor={(pokemon) => pokemon.id.toString()}
+        renderItem={({ item: pokemon }) => (
+          <Card
+            data={pokemon}
+            onPress={() => {
+              handleNavigation(pokemon.id);
+            }}
+          />
+        )}
+      />
+    </S.Container>
+  );
 }
