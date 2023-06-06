@@ -68,12 +68,12 @@ export function Home() {
 
   return (
     <S.Container>
-      <TextInput
+      {/* <TextInput
         style={S.SearchInput}
         placeholder="Digite o número ou nome do Pokémon"
         onChangeText={handleSearch}
         value={searchQuery}
-      />
+      /> */}
       <S.Header source={pokeballHeader} />
       <S.Title>Pokédex</S.Title>
       <FlatList
