@@ -16,7 +16,7 @@ export const Container = styled.View`
 export const Header = styled.ImageBackground`
   ${({ theme }) => css`
     width: ${windowWidth}px;
-    height: 250px;
+    height: 80px;
     background-color: ${theme.colors.background};
     margin-left: -20px;
   `}
@@ -33,16 +33,16 @@ export const Title = styled.Text`
   `}
 `;
 
-// export const SearchInput = styled.TextInput`
-//   ${({ theme }) => css`
-//     background-color: ${theme.colors.light_background};
-//     color: ${theme.colors.text};
-//     padding: 10px;
-//     font-size: 16px;
-//     border-radius: 8px;
-//     margin-bottom: 10px;
-//   `}
-// `;
+export const SearchInput = styled.TextInput`
+  ${({ theme }) => css`
+    background-color: ${theme.colors.light_background};
+    color: ${theme.colors.text};
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  `}
+`;
 
 export const CardContainer = styled.TouchableOpacity`
   ${({ theme }) => css`

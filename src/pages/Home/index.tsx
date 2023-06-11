@@ -68,14 +68,15 @@ export function Home() {
 
   return (
     <S.Container>
-      {/* <TextInput
+     
+      <S.Header source={pokeballHeader} />
+      <S.Title>Pokédex</S.Title>
+      <TextInput
         style={S.SearchInput}
         placeholder="Digite o número ou nome do Pokémon"
         onChangeText={handleSearch}
         value={searchQuery}
-      /> */}
-      <S.Header source={pokeballHeader} />
-      <S.Title>Pokédex</S.Title>
+      />
       <FlatList
         data={filteredPokemons}
         keyExtractor={(pokemon) => pokemon.id.toString()}
