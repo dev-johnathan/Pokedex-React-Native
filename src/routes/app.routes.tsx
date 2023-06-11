@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import  React from 'react';
-import { Welcome } from '../pages/welcome';
+import { Welcome } from '../pages/Welcome';
 import { Home } from '../pages/Home';
 import { About } from '../pages/About';
 

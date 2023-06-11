@@ -3,18 +3,13 @@ export default {
 
         background: '#FFFFFF',
         backgroundWater: '#58ABF6',
-        backgroundEletric: '#F2CB55',
+        backgroundElectric: '#F2CB55',
         light_background: '##747476',
         text_white: '#FFFFFF',
         light_text: 'rbga(23, 23, 27, 0.6)',
         detail: '#747476',
         text: '#050617',
 
-    type: {
-
-        water: '#4A90DA',
-        eletric: '#EED535',   
-        },
 
         backgroundCard: {
             grass: '#8BBE8A',
@@ -24,8 +19,17 @@ export default {
             normal: '#B5B9C4',
             bug: '#8BD674',
             flying: '#748FC9',
-            eletric: '#F2CB55',
+            electric: '#F2CB55',
             ground: '#F78551',
+            dark: '#6F6E78',
+            dragon: '#7383B9',
+            fairy: '#EBA8C3',
+            fighting: '#EB4971',
+            ghost:'#8571BE',
+            ice: '#91D8DF',
+            psychic: '#FF6568',
+            rock: '#D4C294',
+            steel: '#4C91B2',
           },
       
           boxType: {
@@ -36,8 +40,26 @@ export default {
             normal: '#9DA0AA',
             bug: '#8CB330',
             flying: '#748FC9',
-            eletric: '#F2CB55',
+            electric: '#F2CB55',
             ground: '#F78551',
+            dark: '#58575F',
+            dragon: '#0F6AC0',
+            fairy: '#ED6EC7',
+            fighting: '#D04164',
+            ghost:'#556AAE',
+            ice: '#61CEC0',
+            psychic: '#EA5D60',
+            rock: '#BAAB82',
+            steel: '#417D9A',
+
           },
+
+
+          welcome: {
+            theme: '#EB4971',   
+            theme2: '#FFFFFF',
+            theme3: '#FFFFFF',
+            },
+    
     }
 };

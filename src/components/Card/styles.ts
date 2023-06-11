@@ -2,22 +2,20 @@ import { css } from 'styled-components/native';
 import styled from 'styled-components/native';
 
 
-type PokemonType = {
-    type: string
-}
+type PokemonCardProps = {
+  type: string;
+};
 
-export const PokemonCard = styled.TouchableOpacity<PokemonType>`
-    
-    ${({ theme, type }) => css`
-
-        background-color: ${theme.colors.backgroundCard[type]};
-        border-radius: 10px;
-        margin-top: 30px;
-        flex-direction: row; 
-        padding: 20px;
-    
-    `}
-    `;
+  
+export const PokemonCard = styled.TouchableOpacity<PokemonCardProps>`
+  ${({ theme, type }) => css`
+    background-color: ${theme.colors.backgroundCard[type as keyof typeof theme.colors.backgroundCard]};
+    border-radius: 10px;
+    margin-top: 30px;
+    flex-direction: row;
+    padding: 20px;
+  `}
+`;
 
 
     export const LeftSide = styled.View`
@@ -76,19 +74,19 @@ export const PokemonCard = styled.TouchableOpacity<PokemonType>`
 `;
 
 
-    export const PokemonType = styled.View<PokemonType>`
-        ${({ theme, type }) => css`
-        padding: 5px;
-        width: 65px;
-        height: 25px;
-        background: ${theme.colors.boxType[type]};
-        border-radius: 3px;
-        margin-left: 5px;
-        margin-top: 5px;
-        justify-content: center;
-        align-items: center;
-    `}
-    `;
+export const PokemonType = styled.View<PokemonCardProps>`
+  ${({ theme, type }) => css`
+    padding: 5px;
+    width: 65px;
+    height: 25px;
+    background: ${theme.colors.boxType[type as keyof typeof theme.colors.boxType]};
+    border-radius: 3px;
+    margin-left: 5px;
+    margin-top: 5px;
+    justify-content: center;
+    align-items: center;
+  `}
+`;
 
 
     export const PokemonTypeText = styled.Text`

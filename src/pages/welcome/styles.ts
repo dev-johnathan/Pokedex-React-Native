@@ -1,12 +1,11 @@
 import styled, {css} from "styled-components/native";
-import theme from "../../styles/theme";
 
 
 export const Container = styled.View`
 
     ${({theme}) => css`
         flex: 1;
-        background-color: ${theme.colors.type.eletric}
+        background-color: ${theme.colors.welcome.theme}
     
     `}
 `;
@@ -25,7 +24,7 @@ export const Footer = styled.View`
         border-top-right-radius: 20px;
         border-top-left-radius: 20px;
         height: 25%;
-        background-color: ${theme.colors.background};
+        background-color: ${theme.colors.welcome.theme2};
         padding: 20px;
     
     `}
@@ -59,15 +58,14 @@ export const subTitle = styled.Text`
 export const WrapperAnimation = styled.View`
       
         ${({theme})=> css`
-        width: 200px;
+        width: 300px;
         height: 300px;
-
-        background-color: ${theme.colors.backgroundEletric};
+        background-color: ${theme.colors.welcome.theme3};
         border-radius: 100px;
         margin-top: 100px;
         justify-content: center;
         align-items: center;
-        transform: rotate(30deg)
+        transform: rotate(0deg)
 `}
 
 `;
@@ -75,6 +73,6 @@ export const WrapperAnimation = styled.View`
 
 export const WrapperImage = styled.View`
       
-        transform: rotate(-30deg);
+        transform: rotate(-90deg);
 
 `;

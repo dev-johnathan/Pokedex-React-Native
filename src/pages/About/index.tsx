@@ -27,6 +27,8 @@ interface IAbilitys {
   };
 }
 
+
+
 type PokemonTypes = {
   type: {
     name:
@@ -37,8 +39,18 @@ type PokemonTypes = {
       | 'normal'
       | 'bug'
       | 'flying'
-      | 'eletric'
-      | 'ground';
+      | 'electric'
+      | 'ground'
+      | 'dark'
+      | 'dragon'
+      | 'fairy'
+      | 'fighting'
+      | 'ghost'
+      |  'ice'
+      | 'psychic'
+      | 'rock'
+      | 'steel'
+      ;
   };
 };
 

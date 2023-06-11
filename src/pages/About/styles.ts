@@ -4,15 +4,24 @@ import * as Progress from 'react-native-progress';
 
 type TypeProps = {
   type:
-    | 'grass'
-    | 'fire'
-    | 'water'
-    | 'poison'
-    | 'normal'
-    | 'bug'
-    | 'flying'
-    | 'eletric'
-    | 'ground';
+  | 'grass'
+  | 'fire'
+  | 'water'
+  | 'poison'
+  | 'normal'
+  | 'bug'
+  | 'flying'
+  | 'electric'
+  | 'ground'
+  | 'dark'
+  | 'dragon'
+  | 'fairy'
+  | 'fighting'
+  | 'ghost'
+  |  'ice'
+  | 'psychic'
+  | 'rock'
+  | 'steel'
 };
 
 export const LoadingScreen = styled.View`

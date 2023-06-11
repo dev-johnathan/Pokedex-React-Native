@@ -16,7 +16,7 @@ export const Container = styled.View`
 export const Header = styled.ImageBackground`
   ${({ theme }) => css`
     width: ${windowWidth}px;
-    height: 80px;
+    height: 50px;
     background-color: ${theme.colors.background};
     margin-left: -20px;
   `}

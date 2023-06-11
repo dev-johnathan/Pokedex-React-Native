@@ -1,17 +1,9 @@
 import React from "react";
 import { TouchableOpacityProps } from "react-native";
-
 import dotsImage from '../../assets/img/dots.png';
 import pokeball from '../../assets/img/pokeballCard.png';
-
-
-
-
-
-
 import * as S from './styles';
 import { FadeAnimation } from "../FadeAnimation";
-
 
 
 export type PokemonType = {
@@ -31,8 +23,6 @@ export type Pokemon ={
 type Props = {
     data: Pokemon;
 } & TouchableOpacityProps
-
-
 
 
 export function Card({data, ...rest}: Props) {

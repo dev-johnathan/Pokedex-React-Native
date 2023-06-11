@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mypokedex",
-    "slug": "mypokedex",
+    "name": "POKEDEX-REACT-NATIVE",
+    "slug": "POKEDEX-REACT-NATIVE",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

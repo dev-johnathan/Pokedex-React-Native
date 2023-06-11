@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { TextInput } from 'react-native';
 import * as S from './styles';
 import api from '../../services/api';
 import { Card, Pokemon, PokemonType } from '../../components/Card';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import pokeballHeader from '../../assets/img/pokeball.png';
+import { TextInput, TextInputProps, StyleProp, TextStyle } from 'react-native';
 
 type Request = {
   id: number;
@@ -19,14 +19,13 @@ export function Home() {
   const { navigate } = useNavigation();
 
   function handleNavigation(pokemonId: number) {
-    navigate('About', {
-      pokemonId,
-    });
+    navigate('About', { pokemonId: pokemonId });
   }
+  
 
   useEffect(() => {
     async function getAllPokemons() {
-      const response = await api.get('/pokemon');
+      const response = await api.get('/pokemon?limit=1000');
       const { results } = response.data;
 
       const payloadPokemons = await Promise.all(
@@ -72,11 +71,12 @@ export function Home() {
       <S.Header source={pokeballHeader} />
       <S.Title>Pokédex</S.Title>
       <TextInput
-        style={S.SearchInput}
-        placeholder="Digite o número ou nome do Pokémon"
-        onChangeText={handleSearch}
-        value={searchQuery}
-      />
+          style={S.SearchInput as StyleProp<TextStyle>}
+          placeholder="Digite o número ou nome do Pokémon"
+          onChangeText={handleSearch}
+          value={searchQuery}
+        />
+
       <FlatList
         data={filteredPokemons}
         keyExtractor={(pokemon) => pokemon.id.toString()}

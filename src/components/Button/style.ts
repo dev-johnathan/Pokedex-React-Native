@@ -5,7 +5,7 @@ export const Container = styled.TouchableOpacity`
     ${({theme}) => css`
         width: 100%;
         height: 60px;
-        background-color: ${theme.colors.type.eletric};
+        background-color: ${theme.colors.welcome.theme};
 
         justify-content:center;
         align-items:center;
