@@ -5,6 +5,7 @@ import { Card, Pokemon, PokemonType } from '../../components/Card';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import pokeballHeader from '../../assets/img/pokeball.png';
+import { Load } from '../../components/Load';
 import { TextInput, TextInputProps, StyleProp, TextStyle } from 'react-native';
 
 type Request = {
@@ -15,6 +16,7 @@ type Request = {
 export function Home() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   const { navigate } = useNavigation();
 
@@ -25,21 +27,27 @@ export function Home() {
 
   useEffect(() => {
     async function getAllPokemons() {
-      const response = await api.get('/pokemon?limit=1000');
-      const { results } = response.data;
+      try {
+        const response = await api.get('/pokemon?limit=1000');
+        const { results } = response.data;
 
-      const payloadPokemons = await Promise.all(
-        results.map(async (pokemon: Pokemon) => {
-          const { id, types } = await getMoreInfo(pokemon.url);
-          return {
-            name: pokemon.name,
-            id,
-            types,
-          };
-        })
-      );
+        const payloadPokemons = await Promise.all(
+          results.map(async (pokemon: Pokemon) => {
+            const { id, types } = await getMoreInfo(pokemon.url);
+            return {
+              name: pokemon.name,
+              id,
+              types,
+            };
+          })
+        );
 
-      setPokemons(payloadPokemons);
+        setPokemons(payloadPokemons);
+        setIsLoading(false);
+      } catch (error) {
+        console.log('Erro ao carregar os Pokémons:', error);
+        setIsLoading(false);
+      }
     }
 
     getAllPokemons();
@@ -67,28 +75,33 @@ export function Home() {
 
   return (
     <S.Container>
-     
-      <S.Header source={pokeballHeader} />
-      <S.Title>Pokédex</S.Title>
-      <TextInput
-          style={S.SearchInput as StyleProp<TextStyle>}
-          placeholder="Digite o número ou nome do Pokémon"
-          onChangeText={handleSearch}
-          value={searchQuery}
-        />
-
-      <FlatList
-        data={filteredPokemons}
-        keyExtractor={(pokemon) => pokemon.id.toString()}
-        renderItem={({ item: pokemon }) => (
-          <Card
-            data={pokemon}
-            onPress={() => {
-              handleNavigation(pokemon.id);
-            }}
+      {isLoading ? (
+        <Load />
+      ) : (
+        <>
+          <S.Header source={pokeballHeader} />
+          <S.Title>Escolha o seu Pokémon</S.Title>
+          <TextInput
+            style={S.SearchInput as StyleProp<TextStyle>}
+            placeholder="Digite o número ou nome do Pokémon aqui."
+            onChangeText={handleSearch}
+            value={searchQuery}
           />
-        )}
-      />
+
+          <FlatList
+            data={filteredPokemons}
+            keyExtractor={(pokemon) => pokemon.id.toString()}
+            renderItem={({ item: pokemon }) => (
+              <Card
+                data={pokemon}
+                onPress={() => {
+                  handleNavigation(pokemon.id);
+                }}
+              />
+            )}
+          />
+        </>
+      )}
     </S.Container>
   );
 }

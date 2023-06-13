@@ -6,7 +6,8 @@ export default {
         backgroundElectric: '#F2CB55',
         light_background: '##747476',
         text_white: '#FFFFFF',
-        light_text: 'rbga(23, 23, 27, 0.6)',
+        light_text: '#17171B',
+        load_text: '#B5B9C4',
         detail: '#747476',
         text: '#050617',
 
@@ -56,7 +57,7 @@ export default {
 
 
           welcome: {
-            theme: '#EB4971',   
+            theme: '#8BD674',   
             theme2: '#FFFFFF',
             theme3: '#FFFFFF',
             },

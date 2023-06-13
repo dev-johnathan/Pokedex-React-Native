@@ -4,7 +4,8 @@ import pokemonAnimation from './diglet.json';
 import {useNavigation} from '@react-navigation/native'
 import * as S from './styles'
 import { Button } from '../../components/Button/Index';
-
+import All from '../../assets/img/Pokédex_logo.png';
+import Dots from '../../assets/img/dots.png'
 
 export function Welcome(){
     const {navigate} = useNavigation()
@@ -15,21 +16,30 @@ export function Welcome(){
 
 
     return <S.Container>
+
         <S.Content>  
+
             <S.WrapperAnimation>
+                
                 <S.WrapperImage>
-                     <AnimatedLottieView style= {{width: 300}}autoPlay source={pokemonAnimation}/> 
+                
+                     <AnimatedLottieView style= {{width: 400}}autoPlay source={pokemonAnimation}/> 
+                     <S.All source={All}/>
                 </S.WrapperImage>
+              
             </S.WrapperAnimation>
 
-            <S.Title>Bem vindo!</S.Title>
-            <S.subTitle>Pokedex by dev-johnathan!</S.subTitle>
+            <S.Title>Olá!</S.Title>
+            <S.subTitle>by dev-johnathan!</S.subTitle>
 
         </S.Content>
-        <S.Footer>
+  
 
-           <Button title='Iniciar' onPress={handleNavigation}/>
+      <S.Footer>
+
+           <Button  title='Iniciar' onPress={handleNavigation}/>
            
         </S.Footer>
+        <S.Dots source={Dots}/>
     </S.Container>
 }
