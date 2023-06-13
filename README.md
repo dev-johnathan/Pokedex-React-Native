@@ -17,3 +17,6 @@ Projeto para matéria disciplinar Dispositivos Móveis II do curso Tecnólogo em
 
 
 Agradecimentos @rgmelo pelo tutorial que serviu de base para este projeto e @Kev por orientações e dúvidas. 
+
+
+Deixo totalmente livre e sem qualquer restrição para aquele que deseja melhorar ou replicar o projeto.
