@@ -182,7 +182,7 @@ export const Ability = styled.Text`
     line-height: 19px;
     padding: 10px 20px;
     text-transform: capitalize;
-
+    display: flex;
     color: ${theme.colors.detail};
   `}
 `;

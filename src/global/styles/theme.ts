@@ -42,7 +42,7 @@ export default {
             bug: '#8CB330',
             flying: '#748FC9',
             electric: '#F2CB55',
-            ground: '#F78551',
+            ground: '#ffa500',
             dark: '#58575F',
             dragon: '#0F6AC0',
             fairy: '#ED6EC7',
